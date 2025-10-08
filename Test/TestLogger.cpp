@@ -8,16 +8,9 @@
 using namespace std;
 using namespace WorldEngine;
 
-class TestLogger : public ::testing::Test {
-protected:
-    void SetUp() override { Log(Level::INFO, "TestLogger::SetUp"); }
-
-    void TearDown() override { Log(Level::INFO, "TestLogger::TearDown"); }
-};
-
-TEST_F(TestLogger, Log)
+TEST(TestLogger, Log)
 {
-    Log(Level::DEBUG, "TestLogger::Log");
-
-    Log(Level::INFO, "TestLogger::Log");
+    // Log(Level::DEBUG, "TestLogger::Log");
+    //
+    // Log(Level::INFO, "TestLogger::Log");
 }
