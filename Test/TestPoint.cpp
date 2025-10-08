@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "Point4.h"
+#include "Math/Point4.h"
 
 using namespace std;
 using namespace WorldEngine;

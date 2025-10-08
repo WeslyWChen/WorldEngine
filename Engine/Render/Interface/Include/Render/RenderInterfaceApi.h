@@ -1,0 +1,18 @@
+//
+// Created by 30632 on 2025/10/7.
+//
+
+#ifndef WORLDENGINE_RENDERINTERFACEAPI_H
+#define WORLDENGINE_RENDERINTERFACEAPI_H
+
+#ifdef _WIN32
+#ifdef WE_RENDERINTERFACE_BUILD
+#define WE_RENDERINTERFACE_API __declspec(dllexport)
+#else
+#define WE_RENDERINTERFACE_API __declspec(dllimport)
+#endif
+#else
+#define WE_RENDERINTERFACE_API
+#endif
+
+#endif  // WORLDENGINE_RENDERINTERFACEAPI_H

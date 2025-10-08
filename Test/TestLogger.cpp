@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "LoggerInterface.h"
+#include "Logger/LoggerInterface.h"
 
 using namespace std;
 using namespace WorldEngine;

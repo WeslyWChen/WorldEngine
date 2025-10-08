@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "Matrix.h"
+#include "Math/Matrix.h"
 
 using namespace std;
 using namespace WorldEngine;
