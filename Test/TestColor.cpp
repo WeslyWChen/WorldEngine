@@ -4,8 +4,8 @@
 
 #include <complex>
 
-#include "Color.h"
 #include "gtest/gtest.h"
+#include "Math/Color.h"
 
 using namespace std;
 using namespace WorldEngine;

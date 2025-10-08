@@ -5,8 +5,8 @@
 #include <chrono>
 
 #include "gtest/gtest.h"
-#include "ModuleInterface.h"
-#include "SignalCenterInterface.h"
+#include "Module/ModuleInterface.h"
+#include "SignalCenter/SignalCenterInterface.h"
 
 using namespace std;
 using namespace WorldEngine;
