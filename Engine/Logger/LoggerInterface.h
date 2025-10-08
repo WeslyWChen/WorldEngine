@@ -31,6 +31,42 @@ namespace WorldEngine
         WorldEngine::LogImpl(level, std::format(format, std::forward<Args>(args)...));
     }
 
+    template <typename... Args>
+    void LOG_TRACE(std::format_string<Args...> format, Args&&... args)
+    {
+        WorldEngine::Log(Level::TRACE, format, std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void LOG_DEBUG(std::format_string<Args...> format, Args&&... args)
+    {
+        WorldEngine::Log(Level::DEBUG, format, std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void LOG_INFO(std::format_string<Args...> format, Args&&... args)
+    {
+        WorldEngine::Log(Level::INFO, format, std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void LOG_WARNING(std::format_string<Args...> format, Args&&... args)
+    {
+        WorldEngine::Log(Level::WARNING, format, std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void LOG_ERROR(std::format_string<Args...> format, Args&&... args)
+    {
+        WorldEngine::Log(Level::ERROR, format, std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void LOG_FATAL(std::format_string<Args...> format, Args&&... args)
+    {
+        WorldEngine::Log(Level::FATAL, format, std::forward<Args>(args)...);
+    }
+
 }  // namespace WorldEngine
 
 #endif  // WORLDENGINE_LOGGERINTERFACE_H
