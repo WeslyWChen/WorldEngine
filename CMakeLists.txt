@@ -15,4 +15,5 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/ThirdParty)
 
 add_subdirectory(Engine)
 add_subdirectory(Sample)
+add_subdirectory(Test)
 add_subdirectory(ThirdParty)
