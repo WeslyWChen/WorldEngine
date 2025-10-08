@@ -1,0 +1,8 @@
+# cache
+/.idea
+/.vscode
+/.vs
+
+# output
+/out
+/cmake-build-*
