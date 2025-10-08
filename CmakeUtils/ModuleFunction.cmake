@@ -7,7 +7,7 @@ endfunction()
 
 function(make_shared_module MODULE_NAME MODULE_DIR)
     # add build definition
-    set(BUILD_DEFINITION "${MODULE_NAME}_build")
+    set(BUILD_DEFINITION "we_${MODULE_NAME}_build")
     string(TOUPPER ${BUILD_DEFINITION} BUILD_DEFINITION)
     add_compile_definitions(${BUILD_DEFINITION})
     # add library

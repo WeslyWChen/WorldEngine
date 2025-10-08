@@ -13,7 +13,7 @@
 
 namespace WorldEngine
 {
-    class WEAPP_API WindowApp : public App {
+    class WE_APP_API WindowApp : public App {
     public:
         WindowApp(int argc, char** argv);
         ~WindowApp() override;

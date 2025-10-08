@@ -9,7 +9,7 @@
 
 namespace WorldEngine
 {
-    class WEAPP_API App {
+    class WE_APP_API App {
     protected:
         App(int argc, char** argv);
         virtual ~App() = default;

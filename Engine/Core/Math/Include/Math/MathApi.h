@@ -6,13 +6,13 @@
 #define WORLDENGINE_MATHAPI_H
 
 #ifdef _WIN32
-#ifdef WEMATH_BUILD
-#define WEMATH_API __declspec(dllexport)
+#ifdef WE_MATH_BUILD
+#define WE_MATH_API __declspec(dllexport)
 #else
-#define WEMATH_API __declspec(dllimport)
+#define WE_MATH_API __declspec(dllimport)
 #endif
 #else
-#define WEMATH_API
+#define WE_MATH_API
 #endif
 
 #endif  // WORLDENGINE_MATHAPI_H

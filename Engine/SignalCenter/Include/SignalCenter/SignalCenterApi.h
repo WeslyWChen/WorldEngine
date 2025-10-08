@@ -6,13 +6,13 @@
 #define WORLDENGINE_SIGNALCENTERAPI_H
 
 #ifdef _WIN32
-#ifdef WESIGNALCENTER_BUILD
-#define WESIGNALCENTER_API __declspec(dllexport)
+#ifdef WE_SIGNALCENTER_BUILD
+#define WE_SIGNALCENTER_API __declspec(dllexport)
 #else
-#define WESIGNALCENTER_API __declspec(dllimport)
+#define WE_SIGNALCENTER_API __declspec(dllimport)
 #endif
 #else
-#define WESIGNALCENTER_API
+#define WE_SIGNALCENTER_API
 #endif
 
 #endif  // WORLDENGINE_SIGNALCENTERAPI_H

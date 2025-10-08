@@ -16,7 +16,7 @@ namespace WorldEngine
         virtual std::shared_ptr<IWindow> createWindow() = 0;
     };
 
-    WERENDERMANAGER_API IRenderManager& GetRenderManager();
+    WE_RENDERMANAGER_API IRenderManager& GetRenderManager();
 
 }  // namespace WorldEngine
 

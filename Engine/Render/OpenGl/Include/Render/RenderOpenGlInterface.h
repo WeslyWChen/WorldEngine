@@ -10,7 +10,7 @@
 
 namespace WorldEngine
 {
-    WERENDEROPENGL_API std::shared_ptr<IRenderer> CreateOpenGlRenderer();
+    WE_RENDEROPENGL_API std::shared_ptr<IRenderer> CreateOpenGlRenderer();
 }  // namespace WorldEngine
 
 #endif  // WORLDENGINE_RENDEROPENGLINTERFACE_H

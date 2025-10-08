@@ -35,7 +35,7 @@ namespace WorldEngine
         virtual void registerModule(std::shared_ptr<IModule> module) = 0;
     };
 
-    WEMODULE_API IModuleManager& GetModuleManager();
+    WE_MODULE_API IModuleManager& GetModuleManager();
 
 }  // namespace WorldEngine
 

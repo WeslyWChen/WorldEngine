@@ -102,14 +102,14 @@ namespace WorldEngine
 
     namespace ColorUtil
     {
-        WEMATH_API Color convertToColor(const ColorF& colorF);
-        WEMATH_API Color convertToColor(const HSV& hsv);
+        WE_MATH_API Color convertToColor(const ColorF& colorF);
+        WE_MATH_API Color convertToColor(const HSV& hsv);
 
-        WEMATH_API ColorF convertToColorF(const Color& color);
-        WEMATH_API ColorF convertToColorF(const HSV& hsv);
+        WE_MATH_API ColorF convertToColorF(const Color& color);
+        WE_MATH_API ColorF convertToColorF(const HSV& hsv);
 
-        WEMATH_API HSV convertToHsv(const Color& color);
-        WEMATH_API HSV convertToHsv(const ColorF& colorF);
+        WE_MATH_API HSV convertToHsv(const Color& color);
+        WE_MATH_API HSV convertToHsv(const ColorF& colorF);
     }  // namespace ColorUtil
 
 }  // namespace WorldEngine

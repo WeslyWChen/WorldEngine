@@ -6,13 +6,13 @@
 #define WORLDENGINE_RENDERINTERFACEAPI_H
 
 #ifdef _WIN32
-#ifdef WERENDERINTERFACE_BUILD
-#define WERENDERINTERFACE_API __declspec(dllexport)
+#ifdef WE_RENDERINTERFACE_BUILD
+#define WE_RENDERINTERFACE_API __declspec(dllexport)
 #else
-#define WERENDERINTERFACE_API __declspec(dllimport)
+#define WE_RENDERINTERFACE_API __declspec(dllimport)
 #endif
 #else
-#define WERENDERINTERFACE_API
+#define WE_RENDERINTERFACE_API
 #endif
 
 #endif  // WORLDENGINE_RENDERINTERFACEAPI_H

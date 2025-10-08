@@ -23,7 +23,7 @@ namespace WorldEngine
         DEFAULT = INFO,
     };
 
-    WELOGGER_API void LogImpl(Level level, const std::string& message);
+    WE_LOGGER_API void LogImpl(Level level, const std::string& message);
 
     template <typename... Args>
     void Log(Level level, std::format_string<Args...> format, Args&&... args)

@@ -43,13 +43,13 @@ namespace WorldEngine
      * @brief create a signal center, provided for unit test code
      * @return a shared pointer to the signal center
      */
-    WESIGNALCENTER_API std::shared_ptr<ISignalCenter> CreateSignalCenter();
+    WE_SIGNALCENTER_API std::shared_ptr<ISignalCenter> CreateSignalCenter();
 
     /**
      * @brief get the signal center of single instance
      * @return a reference to the signal center
      */
-    WESIGNALCENTER_API ISignalCenter& GetSignalCenter();
+    WE_SIGNALCENTER_API ISignalCenter& GetSignalCenter();
 
 }  // namespace WorldEngine
 

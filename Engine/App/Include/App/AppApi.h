@@ -6,13 +6,13 @@
 #define WORLDENGINE_APPAPI_H
 
 #ifdef _WIN32
-#ifdef WEAPP_BUILD
-#define WEAPP_API __declspec(dllexport)
+#ifdef WE_APP_BUILD
+#define WE_APP_API __declspec(dllexport)
 #else
-#define WEAPP_API __declspec(dllimport)
+#define WE_APP_API __declspec(dllimport)
 #endif
 #else
-#define WEAPP_API
+#define WE_APP_API
 #endif
 
 #endif  // WORLDENGINE_APPAPI_H

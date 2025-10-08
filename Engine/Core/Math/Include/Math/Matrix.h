@@ -13,7 +13,7 @@
 
 namespace WorldEngine
 {
-    class WEMATH_API Matrix final {
+    class WE_MATH_API Matrix final {
     public:
         std::array<float, 16> mat {};
 

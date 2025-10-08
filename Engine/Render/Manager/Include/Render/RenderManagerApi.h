@@ -6,13 +6,13 @@
 #define WORLDENGINE_RENDERMANAGERAPI_H
 
 #ifdef _WIN32
-#ifdef WERENDERMANAGER_BUILD
-#define WERENDERMANAGER_API __declspec(dllexport)
+#ifdef WE_RENDERMANAGER_BUILD
+#define WE_RENDERMANAGER_API __declspec(dllexport)
 #else
-#define WERENDERMANAGER_API __declspec(dllimport)
+#define WE_RENDERMANAGER_API __declspec(dllimport)
 #endif
 #else
-#define WERENDERMANAGER_API
+#define WE_RENDERMANAGER_API
 #endif
 
 #endif  // WORLDENGINE_RENDERMANAGERAPI_H

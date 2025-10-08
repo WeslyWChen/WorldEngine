@@ -6,13 +6,13 @@
 #define WORLDENGINE_MODULEAPI_H
 
 #ifdef _WIN32
-#ifdef WEMODULE_BUILD
-#define WEMODULE_API __declspec(dllexport)
+#ifdef WE_MODULE_BUILD
+#define WE_MODULE_API __declspec(dllexport)
 #else
-#define WEMODULE_API __declspec(dllimport)
+#define WE_MODULE_API __declspec(dllimport)
 #endif
 #else
-#define WEMODULE_API
+#define WE_MODULE_API
 #endif
 
 #endif  // WORLDENGINE_MODULEAPI_H

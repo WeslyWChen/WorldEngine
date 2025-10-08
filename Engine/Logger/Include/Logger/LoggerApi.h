@@ -6,13 +6,13 @@
 #define WORLDENGINE_LOGGERAPI_H
 
 #ifdef _WIN32
-#ifdef WELOGGER_BUILD
-#define WELOGGER_API __declspec(dllexport)
+#ifdef WE_LOGGER_BUILD
+#define WE_LOGGER_API __declspec(dllexport)
 #else
-#define WELOGGER_API __declspec(dllimport)
+#define WE_LOGGER_API __declspec(dllimport)
 #endif
 #else
-#define WELOGGER_API
+#define WE_LOGGER_API
 #endif
 
 #endif  // WORLDENGINE_LOGGERAPI_H

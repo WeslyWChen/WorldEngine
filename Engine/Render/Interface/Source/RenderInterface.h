@@ -9,7 +9,7 @@
 
 namespace WorldEngine
 {
-    class WERENDERINTERFACE_API RenderInterface {};
+    class WE_RENDERINTERFACE_API RenderInterface {};
 }  // namespace WorldEngine
 
 #endif  // WORLDENGINE_RENDERINTERFACE_H
