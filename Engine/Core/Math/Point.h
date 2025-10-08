@@ -6,6 +6,7 @@
 #define WORLDENGINE_POINT_H
 
 #include <cmath>
+#include <limits>
 
 namespace WorldEngine
 {

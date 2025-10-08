@@ -24,8 +24,8 @@ namespace WorldEngine
         Point4(Point4&&) = default;
         Point4& operator=(Point4&&) = default;
 
-        Point4(float x, float y, float z, float w) { set(x, y, z, w); }
-        Point4(Point3 pt3, float w) { set(pt3.x, pt3.y, pt3.z, w); }
+        constexpr Point4(float x, float y, float z, float w) { set(x, y, z, w); }
+        constexpr Point4(Point3 pt3, float w) { set(pt3.x, pt3.y, pt3.z, w); }
 
         static constexpr Point4 Make(float x, float y, float z, float w) { return Point4 {x, y, z, w}; }
 
@@ -56,7 +56,7 @@ namespace WorldEngine
 
         float distanceToOrigin() const { return length(); }
 
-        void set(float _x, float _y, float _z, float _w)
+        constexpr void set(float _x, float _y, float _z, float _w)
         {
             this->x = _x;
             this->y = _y;
@@ -64,7 +64,7 @@ namespace WorldEngine
             this->w = _w;
         }
 
-        void set(int _x, int _y, int _z, int _w)
+        constexpr void set(int _x, int _y, int _z, int _w)
         {
             this->x = static_cast<float>(_x);
             this->y = static_cast<float>(_y);
