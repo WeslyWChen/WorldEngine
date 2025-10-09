@@ -10,7 +10,7 @@
 using namespace std;
 using namespace WorldEngine;
 
-void GlfwWindow::init(WindowType type, std::string title, int width, int height)
+void GlfwWindow::init(RenderBackend type, std::string title, int width, int height)
 {
     mTitle = title;
     mWidth = width;
@@ -51,9 +51,6 @@ void GlfwWindow::run()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // draw handle
-        drawHandle();
-
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -63,5 +60,3 @@ void GlfwWindow::run()
 }
 
 void GlfwWindow::inputHandle() {}
-
-void GlfwWindow::drawHandle() {}

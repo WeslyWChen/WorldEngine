@@ -14,17 +14,17 @@ using namespace WorldEngine;
 static spdlog::level::level_enum convert(Level level)
 {
     switch (level) {
-        case Level::TRACE:
+        case Level::Trace:
             return spdlog::level::trace;
-        case Level::DEBUG:
+        case Level::Debug:
             return spdlog::level::debug;
-        case Level::INFO:
+        case Level::Info:
             return spdlog::level::info;
-        case Level::WARNING:
+        case Level::Warning:
             return spdlog::level::warn;
-        case Level::ERROR:
+        case Level::Error:
             return spdlog::level::err;
-        case Level::FATAL:
+        case Level::Fatal:
             return spdlog::level::critical;
         default:
             return spdlog::level::info;

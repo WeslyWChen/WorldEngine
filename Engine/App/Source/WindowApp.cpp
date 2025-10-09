@@ -25,7 +25,7 @@ void WindowApp::onRun()
     if (!window)
         return;
 
-    window->init(WindowType::WINDOW_TYPE_OPENGL, mImpl->mTitle, mImpl->mWidth, mImpl->mHeight);
+    window->init(RenderBackend::OpenGL, mImpl->mTitle, mImpl->mWidth, mImpl->mHeight);
     window->run();
     window->unInit();
 }

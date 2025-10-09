@@ -19,14 +19,13 @@ namespace WorldEngine
         GlfwWindow& operator=(GlfwWindow&&) = delete;
 
     public:  // IWindow
-        void init(WindowType type, std::string title, int width, int height) override;
+        void init(RenderBackend type, std::string title, int width, int height) override;
         void unInit() override;
         void addLayer(std::shared_ptr<IWindowLayer> windowLayer) override;
         void run() override;
 
     private:
         void inputHandle();
-        void drawHandle();
 
     private:
         std::string mTitle {};
