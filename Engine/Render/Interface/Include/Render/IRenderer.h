@@ -8,6 +8,7 @@
 #include <memory>
 
 #include "IRenderObject.h"
+#include "IWindow.h"
 
 namespace WorldEngine
 {
@@ -16,8 +17,8 @@ namespace WorldEngine
 
         virtual void init() = 0;
         virtual void shutdown() = 0;
-        virtual void run() = 0;
         virtual void addRenderObject(std::shared_ptr<IRenderObject> renderObject) = 0;
+        virtual void render(IWindow* window) = 0;
     };
 }  // namespace WorldEngine
 

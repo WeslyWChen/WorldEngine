@@ -26,8 +26,23 @@ void WindowApp::onRun()
         return;
 
     window->init(RenderBackend::OpenGL, mImpl->mTitle, mImpl->mWidth, mImpl->mHeight);
-    window->run();
+    window->run(nullptr);
     window->unInit();
+}
+
+std::string WindowApp::getTitle() const
+{
+    return mImpl->mTitle;
+}
+
+int WindowApp::getWidth() const
+{
+    return mImpl->mWidth;
+}
+
+int WindowApp::getHeight() const
+{
+    return mImpl->mHeight;
 }
 
 void WindowApp::setTitle(const std::string& title)

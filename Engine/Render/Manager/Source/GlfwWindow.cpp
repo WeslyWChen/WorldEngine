@@ -4,24 +4,25 @@
 
 #include "GlfwWindow.h"
 
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#include "RenderFactory.h"
 
 using namespace std;
 using namespace WorldEngine;
 
+void* GlfwWindow::getWindow() const
+{
+    return mWindow;
+}
+
 void GlfwWindow::init(RenderBackend type, std::string title, int width, int height)
 {
+    mRenderBackend = type;
     mTitle = title;
     mWidth = width;
     mHeight = height;
 }
 
-void GlfwWindow::unInit() {}
-
-void GlfwWindow::addLayer(std::shared_ptr<IWindowLayer> windowLayer) {}
-
-void GlfwWindow::run()
+void GlfwWindow::run(std::shared_ptr<ITicker> ticker)
 {
     if (!glfwInit())
         return;
@@ -36,27 +37,69 @@ void GlfwWindow::run()
         return;
     }
 
-    glfwMakeContextCurrent(window);
+    mWindow = window;
+
+    mRenderer = RenderFactory::CreateRender(mRenderBackend);
+    if (!mRenderer)
+        return;
+
+    mRunning = true;
+    mRenderFuture = async(launch::async, [this]() { renderLoop(); });
+
+    while (!glfwWindowShouldClose(mWindow)) {
+        glfwPollEvents();
+
+        mainTick(ticker);
+
+        commitRenderCommand();
+    }
+
+    mRunning = false;
+    mRenderCond.notify_all();
+    if (mRenderFuture.valid())
+        mRenderFuture.wait();
+
+    glfwDestroyWindow(mWindow);
+    glfwTerminate();
+}
+
+void GlfwWindow::unInit() {}
+
+void GlfwWindow::addLayer(std::shared_ptr<IWindowLayer> windowLayer) {}
+
+void GlfwWindow::mainTick(std::shared_ptr<ITicker> ticker)
+{
+    if (!ticker)
+        return;
+}
+
+void GlfwWindow::commitRenderCommand() {}
+
+void GlfwWindow::renderLoop()
+{
+    if (!mRenderer || !mWindow)
+        return;
+
+    glfwMakeContextCurrent(mWindow);
 
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
         return;
 
-    glViewport(0, 0, mWidth, mHeight);
+    int width = 0;
+    int height = 0;
+    glfwGetFramebufferSize(mWindow, &width, &height);
+    glViewport(0, 0, width, height);
 
-    while (!glfwWindowShouldClose(window)) {
-        // input handle
-        inputHandle();
+    mRenderer->init();
 
-        // clear back buffer
+    while (mRunning) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glfwSwapBuffers(window);
-        glfwPollEvents();
+        mRenderer->render(this);
+
+        glfwSwapBuffers(mWindow);
     }
 
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    mRenderer->shutdown();
 }
-
-void GlfwWindow::inputHandle() {}
