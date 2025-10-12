@@ -4,17 +4,15 @@
 
 #include "SignalCenter/SignalCenterInterface.h"
 
-#include "SignalCenter.h"
-
 using namespace std;
 using namespace WorldEngine;
 
-std::shared_ptr<ISignalCenter> WorldEngine::CreateSignalCenter()
+std::shared_ptr<SignalCenter> WorldEngine::CreateSignalCenter()
 {
     return make_shared<SignalCenter>();
 }
 
-ISignalCenter& WorldEngine::GetSignalCenter()
+std::shared_ptr<SignalCenter> WorldEngine::GetSignalCenter()
 {
-    return *SignalCenter::Instance();
+    return SignalCenter::Instance();
 }

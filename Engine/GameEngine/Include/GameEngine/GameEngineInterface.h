@@ -12,8 +12,7 @@
 
 namespace WorldEngine
 {
-    struct IGameEngine : public ITicker {
-    };
+    struct IGameEngine : public ITicker {};
 
     WE_GAMEENGINE_API std::shared_ptr<IGameEngine> GetGameEngine();
 

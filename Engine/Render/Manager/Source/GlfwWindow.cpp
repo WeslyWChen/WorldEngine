@@ -5,6 +5,7 @@
 #include "GlfwWindow.h"
 
 #include "RenderFactory.h"
+#include "SignalCenter/SignalCenterInterface.h"
 
 using namespace std;
 using namespace WorldEngine;
@@ -43,6 +44,73 @@ void GlfwWindow::run(std::shared_ptr<ITicker> ticker)
     if (!mRenderer)
         return;
 
+    // NOLINTBEGIN
+    glfwSetKeyCallback(mWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+        switch (action) {
+            case GLFW_PRESS:
+                GetSignalCenter()->emitSignal(SIGNAL_KEY_DOWN, key, mods);
+                break;
+            case GLFW_RELEASE:
+                GetSignalCenter()->emitSignal(SIGNAL_KEY_UP, key, mods);
+                break;
+            case GLFW_REPEAT:
+                GetSignalCenter()->emitSignal(SIGNAL_KEY_REPEAT, key, mods);
+                break;
+            default:
+                break;
+        }
+    });
+    glfwSetMouseButtonCallback(mWindow, [](GLFWwindow* window, int button, int action, int mods) {
+        double xpos = 0.0f;
+        double ypos = 0.0f;
+        glfwGetCursorPos(window, &xpos, &ypos);
+        float fxpos = static_cast<float>(xpos);
+        float fypos = static_cast<float>(ypos);
+        switch (action) {
+            case GLFW_PRESS: {
+                switch (button) {
+                    case GLFW_MOUSE_BUTTON_LEFT:
+                        GetSignalCenter()->emitSignal(SIGNAL_MOUSE_LEFT_DOWN, fxpos, fypos, mods);
+                        break;
+                    case GLFW_MOUSE_BUTTON_RIGHT:
+                        GetSignalCenter()->emitSignal(SIGNAL_MOUSE_RIGHT_DOWN, fxpos, fypos, mods);
+                        break;
+                    case GLFW_MOUSE_BUTTON_MIDDLE:
+                        GetSignalCenter()->emitSignal(SIGNAL_MOUSE_MIDDLE_DOWN, fxpos, fypos, mods);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
+            case GLFW_RELEASE: {
+                switch (button) {
+                    case GLFW_MOUSE_BUTTON_LEFT:
+                        GetSignalCenter()->emitSignal(SIGNAL_MOUSE_LEFT_UP, fxpos, fypos, mods);
+                        break;
+                    case GLFW_MOUSE_BUTTON_RIGHT:
+                        GetSignalCenter()->emitSignal(SIGNAL_MOUSE_RIGHT_UP, fxpos, fypos, mods);
+                        break;
+                    case GLFW_MOUSE_BUTTON_MIDDLE:
+                        GetSignalCenter()->emitSignal(SIGNAL_MOUSE_MIDDLE_UP, fxpos, ypos, mods);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
+            default:
+                break;
+        }
+    });
+    glfwSetCursorPosCallback(mWindow,
+                             [](GLFWwindow* window, double xpos, double ypos) { GetSignalCenter()->emitSignal(SIGNAL_MOUSE_MOVE, xpos, ypos); });
+    glfwSetScrollCallback(
+            mWindow, [](GLFWwindow* window, double xoffset, double yoffset) { GetSignalCenter()->emitSignal(SIGNAL_MOUSE_WHEEL, xoffset, yoffset); });
+    glfwSetWindowSizeCallback(mWindow,
+                              [](GLFWwindow* window, int width, int height) { GetSignalCenter()->emitSignal(SIGNAL_WINDOW_RESIZE, width, height); });
+    // NOLINTEND
+
     mRunning = true;
     mRenderFuture = async(launch::async, [this]() { renderLoop(); });
 
@@ -67,10 +135,12 @@ void GlfwWindow::unInit() {}
 
 void GlfwWindow::addLayer(std::shared_ptr<IWindowLayer> windowLayer) {}
 
-void GlfwWindow::mainTick(std::shared_ptr<ITicker> ticker)
+void GlfwWindow::mainTick(const std::shared_ptr<ITicker>& ticker)
 {
     if (!ticker)
         return;
+
+    ticker->onTick();
 }
 
 void GlfwWindow::commitRenderCommand() {}

@@ -3,3 +3,10 @@
 //
 
 #include "WorldEngineModule.h"
+
+using namespace std;
+using namespace WorldEngine;
+
+void WorldEngineModule::init() {}
+
+void WorldEngineModule::shutdown() {}

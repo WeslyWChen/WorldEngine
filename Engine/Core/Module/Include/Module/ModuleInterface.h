@@ -33,6 +33,11 @@ namespace WorldEngine
          * @param module the module to be registered
          */
         virtual void registerModule(std::shared_ptr<IModule> module) = 0;
+
+        /**
+         * @brief shutdown all modules
+         */
+        virtual void shutdown() = 0;
     };
 
     WE_MODULE_API IModuleManager& GetModuleManager();
