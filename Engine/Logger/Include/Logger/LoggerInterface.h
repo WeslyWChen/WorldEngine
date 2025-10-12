@@ -14,13 +14,13 @@
 namespace WorldEngine
 {
     enum class Level : std::uint8_t {
-        TRACE,
-        DEBUG,
-        INFO,
-        WARNING,
-        ERROR,
-        FATAL,
-        DEFAULT = INFO,
+        Trace,
+        Debug,
+        Info,
+        Warning,
+        Error,
+        Fatal,
+        Default = Info,
     };
 
     WE_LOGGER_API void LogImpl(Level level, const std::string& message);
@@ -34,37 +34,37 @@ namespace WorldEngine
     template <typename... Args>
     void LOG_TRACE(std::format_string<Args...> format, Args&&... args)
     {
-        WorldEngine::Log(Level::TRACE, format, std::forward<Args>(args)...);
+        WorldEngine::Log(Level::Trace, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void LOG_DEBUG(std::format_string<Args...> format, Args&&... args)
     {
-        WorldEngine::Log(Level::DEBUG, format, std::forward<Args>(args)...);
+        WorldEngine::Log(Level::Debug, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void LOG_INFO(std::format_string<Args...> format, Args&&... args)
     {
-        WorldEngine::Log(Level::INFO, format, std::forward<Args>(args)...);
+        WorldEngine::Log(Level::Info, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void LOG_WARNING(std::format_string<Args...> format, Args&&... args)
     {
-        WorldEngine::Log(Level::WARNING, format, std::forward<Args>(args)...);
+        WorldEngine::Log(Level::Warning, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void LOG_ERROR(std::format_string<Args...> format, Args&&... args)
     {
-        WorldEngine::Log(Level::ERROR, format, std::forward<Args>(args)...);
+        WorldEngine::Log(Level::Error, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void LOG_FATAL(std::format_string<Args...> format, Args&&... args)
     {
-        WorldEngine::Log(Level::FATAL, format, std::forward<Args>(args)...);
+        WorldEngine::Log(Level::Fatal, format, std::forward<Args>(args)...);
     }
 
 }  // namespace WorldEngine

@@ -1,2 +1,3 @@
+add_subdirectory(GameAppSample)
 add_subdirectory(HelloWorld)
 add_subdirectory(WindowAppSample)

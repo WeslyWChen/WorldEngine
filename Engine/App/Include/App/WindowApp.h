@@ -26,6 +26,10 @@ namespace WorldEngine
         void onRun() override;
 
     public:
+        std::string getTitle() const;
+        int getWidth() const;
+        int getHeight() const;
+
         void setTitle(const std::string& title);
         void setSize(int width, int height);
 
