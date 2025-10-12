@@ -15,11 +15,7 @@ ModuleManager& ModuleManager::Instance()
 
 ModuleManager::~ModuleManager()
 {
-    while (!mModules.empty()) {
-        if (auto module = mModules.top())
-            module->shutdown();
-        mModules.pop();
-    }
+    shutdown();
 }
 
 void ModuleManager::registerModule(std::shared_ptr<WorldEngine::IModule> module)
@@ -29,4 +25,13 @@ void ModuleManager::registerModule(std::shared_ptr<WorldEngine::IModule> module)
 
     module->init();
     mModules.push(module);
+}
+
+void ModuleManager::shutdown()
+{
+    while (!mModules.empty()) {
+        if (auto module = mModules.top())
+            module->shutdown();
+        mModules.pop();
+    }
 }

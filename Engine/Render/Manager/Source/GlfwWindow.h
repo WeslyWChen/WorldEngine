@@ -5,6 +5,7 @@
 #ifndef WORLDENGINE_GLFWWINDOW_H
 #define WORLDENGINE_GLFWWINDOW_H
 
+#include <condition_variable>
 #include <future>
 
 #include "glad/glad.h"
@@ -31,7 +32,7 @@ namespace WorldEngine
         void addLayer(std::shared_ptr<IWindowLayer> windowLayer) override;
 
     public:
-        void mainTick(std::shared_ptr<ITicker> ticker);
+        void mainTick(const std::shared_ptr<ITicker>& ticker);
         void commitRenderCommand();
         void renderLoop();
 

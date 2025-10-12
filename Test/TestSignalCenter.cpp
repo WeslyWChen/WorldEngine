@@ -30,7 +30,7 @@ TEST(TestSignalCenter, MainThreadRun)
 
     int count = 0;
     signalCenter->connect("test", [&count] { count++; });
-    signalCenter->emitSignal("test", SignalTrigger::MAIN_THREAD);
+    signalCenter->emitSignalMainThread("test");
     ASSERT_EQ(count, 0);
     signalCenter->runMainThread();
     ASSERT_EQ(count, 1);
@@ -45,7 +45,7 @@ TEST(TestSignalCenter, SignalThreadRun)
 
     int count = 0;
     signalCenter->connect("test", [&count] { count++; });
-    signalCenter->emitSignal("test", SignalTrigger::SIGNAL_THREAD);
+    signalCenter->emitSignalSignalThread("test");
     ASSERT_TRUE(count == 0 || count == 1);
     this_thread::sleep_for(500ms);
     signalCenter->shutdownSignalThread();

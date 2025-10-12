@@ -25,6 +25,7 @@ namespace WorldEngine
 
     public:  // IModuleManager
         void registerModule(std::shared_ptr<WorldEngine::IModule> module) override;
+        void shutdown() override;
 
     private:
         std::stack<std::shared_ptr<WorldEngine::IModule>> mModules {};
